@@ -1,0 +1,29 @@
+package Ventanas;
+
+import Clases.DatosGraficos;
+import Clases.PintanrDibujos;
+import static Ventanas.Inicio.jPanel1;
+/**
+ *
+ * @author Jesus
+ */
+public class MostrarDibujos {
+    private int tope=0;// lleva la cantidad de nodos creado 
+    private int nodoFin;
+    private int permanente;
+    int n=0,nn=0,id,id2;// permite controlar cuando se da click sobre un nodo
+    private int aristaMayor;
+    DatosGraficos arboles = new DatosGraficos();
+    
+    public static void R_repaint(int tope, DatosGraficos arboles){
+        for (int j = 0; j < tope; j++) {
+            for (int k = 0; k < tope; k++) {
+                if(arboles.getmAdyacencia(j, k) == 1)
+                     PintanrDibujos.pinta_Linea(jPanel1.getGraphics(),arboles.getCordeX(j),arboles.getCordeY(j), arboles.getCordeX(k), arboles.getCordeY(k),arboles.getmCoeficiente(j, k));
+                                 }
+        }
+        for (int j = 0; j < tope; j++) 
+            PintanrDibujos.pinta_Circulo(jPanel1.getGraphics(), arboles.getCordeX(j),arboles.getCordeY(j),String.valueOf(arboles.getNombre(j)));
+                
+   }
+}
